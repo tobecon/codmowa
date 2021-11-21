@@ -1,0 +1,2 @@
+# codmowa
+my personnal blog
