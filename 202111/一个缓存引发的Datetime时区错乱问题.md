@@ -72,7 +72,7 @@ DateTime is serialized to MessagePack Timestamp format, it serialize/deserialize
 ```
     - 简单翻译一下就是 DatetTime 被序列化成了 MessagePack Timestamp 格式, 并去掉了 Datetime 的 Kind 信息 以便和其他的系统交流.
     - 如果你想保留Kind 信息,只能使用 NativeDateTimeResolver, 但是这样就只能与 .Net 平台交互.
-
+```
 ### 解决方案
 
 ```c#
@@ -86,17 +86,6 @@ DateTime is serialized to MessagePack Timestamp format, it serialize/deserialize
         [MessagePack.MessagePackFormatter(typeof(MessagePack.Formatters.NativeDateTimeFormatter))]
         public DateTime Mydate { get; set; }
     }
-```
-
-```json
-{
-  "content": {
-    "mydateUtc": "2021-11-24T13:07:22.6223279Z",
-    "mydate": "2021-11-24T21:07:22.6222969+08:00"
-  },
-  "errorCode": 0
-}
-// 返回结果也正常了
 ```
 
 
