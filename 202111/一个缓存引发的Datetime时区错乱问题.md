@@ -116,4 +116,5 @@ DateTime is serialized to MessagePack Timestamp format, it serialize/deserialize
 ### 引用
 
 [MessagePack-Csharp](https://github.com/neuecc/MessagePack-CSharp#:~:text=DateTime%20is%20serialized%20to,with%20non%2D.NET%20platforms.)
+[MessagePack-Solution](https://github.com/neuecc/MessagePack-CSharp#:~:text=CompositeResolver%20as%20shown%20below%3A)
 
