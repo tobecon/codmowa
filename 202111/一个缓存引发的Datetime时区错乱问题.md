@@ -86,6 +86,29 @@ DateTime is serialized to MessagePack Timestamp format, it serialize/deserialize
         [MessagePack.MessagePackFormatter(typeof(MessagePack.Formatters.NativeDateTimeFormatter))]
         public DateTime Mydate { get; set; }
     }
+
+    // or 
+    public static class Bson
+    {
+
+        private static MessagePack.IFormatterResolver CreateResolver()
+        {
+            var resolver = MessagePack.Resolvers.CompositeResolver.Create(    
+            NativeDateTimeResolver.Instance,
+            StandardResolverAllowPrivate.Instance);
+            return resolver;
+        }
+        private static MessagePackSerializerOptions Options = MessagePackSerializerOptions.Standard.WithResolver(CreateResolver());
+        public static byte[] Serialize<T>(T data)
+        {
+            return MessagePackSerializer.Serialize<T>(data,Options);
+        }
+
+        public static T Deserialize<T>(byte[] data)
+        {
+            return MessagePackSerializer.Deserialize<T>(data, Options);
+        }
+    }
 ```
 
 
